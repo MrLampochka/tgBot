@@ -1,7 +1,8 @@
 import telebot
+from telebot import types
+
 import random
 import config
-from telebot import types
 import codecs
 
 bot = telebot.TeleBot(config.TOKEN)
