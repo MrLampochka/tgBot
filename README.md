@@ -2,4 +2,4 @@
 tgBot created with pyTelegramBotAPI
 
 # install package
-pip install pyTelegramBotAPI
+pip install -r requirements.txt
