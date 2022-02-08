@@ -63,7 +63,6 @@ def answer(message):
         calKeyboard = types.InlineKeyboardMarkup(row_width=1)
         calKeyboard.add(types.InlineKeyboardButton("Открыть календарь в браузере","https://calendar.google.com/calendar/embed?src=0u5m9nrf6m0rcli0pe6n2ljl4s%40group.calendar.google.com&ctz=Europe%2FMoscow"),\
             types.InlineKeyboardButton("Подписаться на календарь (iCal)","https://calendar.google.com/calendar/ical/0u5m9nrf6m0rcli0pe6n2ljl4s%40group.calendar.google.com/public/basic.ics"))
-        bot.send_message(message.chat.id, "Расписание занятий группы БСС1901:")
-        bot.send_photo(message.chat.id, open("lists/cal.png",'rb'),reply_markup=calKeyboard, caption="Расписание занятий группы БСС1901:")
+        bot.send_photo(message.chat.id, open("lists/cal.png",'rb'),reply_markup=calKeyboard, caption="Расписание занятий группы БСС1901")
 
 bot.infinity_polling()
