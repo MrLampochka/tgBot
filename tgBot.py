@@ -11,7 +11,7 @@ bot = telebot.TeleBot(config.TOKEN)
 def start(message):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True,row_width=1)
     
-    keyboard.add("Список группы","Список преподавателей")
+    keyboard.add("Список группы","Список преподавателей","Расписание занятий")
     bot.send_message(message.chat.id, 'Привет! Выбери необходимые списки:', reply_markup=keyboard)
     
 @bot.message_handler(commands=['help'])
@@ -54,9 +54,16 @@ def word(message):
 @bot.message_handler(content_types=['text'])
 def answer(message):
     if message.text.lower() == "список преподавателей":
-        bot.send_message(message.chat.id, codecs.open('teachers.txt',"r","utf_8_sig").read())
+        bot.send_message(message.chat.id, codecs.open('lists/teachers.txt',"r","utf_8_sig").read())
         
     if message.text.lower() == "список группы":
-        bot.send_message(message.chat.id, codecs.open('students.txt',"r","utf_8_sig").read())
+        bot.send_message(message.chat.id, codecs.open('lists/students.txt',"r","utf_8_sig").read())
+
+    if message.text.lower() == "расписание занятий":
+        calKeyboard = types.InlineKeyboardMarkup(row_width=1)
+        calKeyboard.add(types.InlineKeyboardButton("Открыть календарь в браузере","https://calendar.google.com/calendar/embed?src=0u5m9nrf6m0rcli0pe6n2ljl4s%40group.calendar.google.com&ctz=Europe%2FMoscow"),\
+            types.InlineKeyboardButton("Подписаться на календарь (iCal)","https://calendar.google.com/calendar/ical/0u5m9nrf6m0rcli0pe6n2ljl4s%40group.calendar.google.com/public/basic.ics"))
+        bot.send_message(message.chat.id, "Расписание занятий группы БСС1901:")
+        bot.send_photo(message.chat.id, open("lists/cal.png",'rb'),reply_markup=calKeyboard)
 
 bot.infinity_polling()
