@@ -1,5 +1,5 @@
-# tgBot
-tgBot created with pyTelegramBotAPI
+# TgBot
+TgBot created with pyTelegramBotAPI
 use yourself tgTOKEN
 
 # install package
