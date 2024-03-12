@@ -5,7 +5,7 @@ attrs @ file:///opt/conda/conda-bld/attrs_1642510447205/work
 Babel @ file:///tmp/build/80754af9/babel_1620871417480/work
 backcall @ file:///home/ktietz/src/ci/backcall_1611930011877/work
 bleach @ file:///opt/conda/conda-bld/bleach_1641577558959/work
-brotlipy==0.7.0
+brotlipy>=0.7.0
 certifi==2021.10.8
 cffi @ file:///C:/ci_310/cffi_1642682485096/work
 charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work

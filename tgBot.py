@@ -1,12 +1,10 @@
 import codecs
 import random
-
+import os
 import telebot
 from telebot import types
 
-import config
-
-bot = telebot.TeleBot(config.TOKEN)
+bot = telebot.TeleBot(os.getenv('TOKEN'))
 
 
 @bot.message_handler(commands=['start'])
@@ -73,11 +71,14 @@ def answer(message):
     if message.text.lower() == "расписание занятий":
         calKeyboard = types.InlineKeyboardMarkup(row_width=1)
         calKeyboard.add(types.InlineKeyboardButton("Открыть календарь в браузере",
-                                                   "https://calendar.google.com/calendar/embed?src=0u5m9nrf6m0rcli0pe6n2ljl4s%40group.calendar.google.com&ctz=Europe%2FMoscow"), \
+                                                   "https://calendar.google.com/calendar/embed?src"
+                                                   "=0u5m9nrf6m0rcli0pe6n2ljl4s%40group.calendar.google.com&ctz=Europe%2FMoscow"),
                         types.InlineKeyboardButton("Подписаться на календарь (iCal)",
-                                                   "https://calendar.google.com/calendar/ical/0u5m9nrf6m0rcli0pe6n2ljl4s%40group.calendar.google.com/public/basic.ics"))
+                                                   "https://calendar.google.com/calendar/ical"
+                                                   "/0u5m9nrf6m0rcli0pe6n2ljl4s%40group.calendar.google.com/public/basic.ics"))
         bot.send_photo(message.chat.id, open("lists/cal.png", 'rb'), reply_markup=calKeyboard,
                        caption="Расписание занятий группы БСС1901")
+
 
 print('Bot is running!')
 bot.infinity_polling()
